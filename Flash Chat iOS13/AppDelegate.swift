@@ -1,23 +1,42 @@
-//
-//  AppDelegate.swift
-//  Flash Chat iOS13
-//
-//  Created by Angela Yu on 21/10/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
-//
+
+
 
 import UIKit
+import Firebase
+import IQKeyboardManagerSwift
+
+
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
+        print(db)
+        
+        //enable IQKeyboardManager
+        IQKeyboardManager.shared.enable = true
+        //disable auto tool bar
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        //Dismiss keyboard when we click away from it
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
+        
         return true
     }
 
+    
+    
+    
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -26,6 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
+    
+    
+    
+    
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
@@ -33,5 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    
+    
+    
 }
 
